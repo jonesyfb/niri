@@ -28,7 +28,7 @@ output "HDMI-A-1" {
     background-color "#00000000"
 }
 layout {
-    gaps 16
+    gaps 0
     center-focused-column "never"
     preset-column-widths {
         proportion 0.33333
@@ -41,6 +41,7 @@ layout {
         active-gradient from="#8FBCBB" to="#5E81AC" angle=45
         inactive-gradient from="#81A1C1" to="#5E81AC" angle=45 relative-to="workspace-view"
     }
+    background-color "transparent"
     border {
         off
     }
@@ -49,9 +50,10 @@ layout {
     struts {
     }
 }
-spawn-at-startup "waybar"
+spawn-sh-at-startup "QML_IMPORT_PATH=/home/nate/qml-niri/build:$QML_IMPORT_PATH quickshell"
+// spawn-at-startup "waybar"
 spawn-sh-at-startup "wlsunset -t 4500 -T 6500 -s 18:00 -S 08:00"
-spawn-sh-at-startup "wallpaperengine"
+spawn-sh-at-startup "/home/nate/.local/bin/wallpaperengine.sh"
 
 hotkey-overlay {
     skip-at-startup
@@ -68,7 +70,7 @@ window-rule {
     clip-to-geometry true
 }
 window-rule {
-    match app-id="wallpaperengine"
+    match app-id="linux-wallpaperengine"
     match title="wallpaperengine"
     match is-floating=true
     open-maximized true
@@ -81,9 +83,17 @@ layer-rule {
     match namespace="wallpaperengine"
     place-within-backdrop true
 }
+
 window-rule {
     match app-id=r#"waterfox$"# title="^Picture-in-Picture$"
     open-floating true
+}
+window-rule {
+    match title="Picture in picture"
+    open-floating true
+    default-column-width { fixed 650; }
+    default-window-height { fixed 360; }
+    default-floating-position x=10 y=45 relative-to="top-left"
 }
 
 window-rule {
@@ -93,8 +103,8 @@ window-rule {
 }
 binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
-    Mod+T hotkey-overlay-title="Open a Terminal: ghostty " { spawn "ghostty"; }
-    Mod+B hotkey-overlay-title="Open a Browser: waterfox" { spawn "waterfox"; }
+    Mod+T hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
+    Mod+B hotkey-overlay-title="Open a Browser: brave" { spawn "brave"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
