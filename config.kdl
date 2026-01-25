@@ -53,7 +53,9 @@ layout {
 spawn-sh-at-startup "QML_IMPORT_PATH=/home/nate/qml-niri/build:$QML_IMPORT_PATH quickshell"
 // spawn-at-startup "waybar"
 spawn-sh-at-startup "wlsunset -t 4500 -T 6500 -s 18:00 -S 08:00"
-spawn-sh-at-startup "/home/nate/.local/bin/wallpaperengine.sh"
+spawn-at-startup "swww-daemon"
+spawn-at-startup "swww img $(find ~/Pictures/Wallpapers -type f | shuf -n 1)"
+// spawn-sh-at-startup "/home/nate/.local/bin/wallpaperengine.sh"
 
 hotkey-overlay {
     skip-at-startup
@@ -83,6 +85,10 @@ layer-rule {
     match namespace="wallpaperengine"
     place-within-backdrop true
 }
+layer-rule {
+    match namespace="swww-daemon"
+    place-within-backdrop true
+}
 
 window-rule {
     match app-id=r#"waterfox$"# title="^Picture-in-Picture$"
@@ -107,6 +113,7 @@ binds {
     Mod+B hotkey-overlay-title="Open a Browser: brave" { spawn "brave"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+    Mod+Shift+S { spawn "bash" "-c" "/home/nate/.local/bin/toggle-stats.sh"; }
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
