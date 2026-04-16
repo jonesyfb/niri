@@ -1,4 +1,7 @@
 input {
+    touch {
+        map-to-output "HDMI-A-1"
+    }
     keyboard {
         xkb {
         }
@@ -22,9 +25,9 @@ output "DP-1" {
     background-color "#00000000"
 }
 output "HDMI-A-1" {
-    mode "1920x1080@165.000"
+    mode "1024x600@60.044"
     transform "normal"
-    position x=-1920 y=200
+    position x=768 y=1440
     background-color "#00000000"
 }
 layout {
@@ -53,8 +56,9 @@ layout {
 spawn-sh-at-startup "QML_IMPORT_PATH=/home/nate/qml-niri/build:$QML_IMPORT_PATH quickshell"
 // spawn-at-startup "waybar"
 spawn-sh-at-startup "wlsunset -t 4500 -T 6500 -s 18:00 -S 08:00"
-spawn-at-startup "swww-daemon"
-spawn-at-startup "swww img $(find ~/Pictures/Wallpapers -type f | shuf -n 1)"
+spawn-at-startup "awww-daemon"
+spawn-at-startup "mullvad connect"
+spawn-sh-at-startup "$HOME/dotfiles/niri/scripts/set-random-wallpaper.sh"
 // spawn-sh-at-startup "/home/nate/.local/bin/wallpaperengine.sh"
 
 hotkey-overlay {
@@ -86,7 +90,7 @@ layer-rule {
     place-within-backdrop true
 }
 layer-rule {
-    match namespace="swww-daemon"
+    match namespace="awww-daemon"
     place-within-backdrop true
 }
 
@@ -121,6 +125,9 @@ binds {
     XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
     XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
     XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+    XF86AudioPlay allow-when-locked=true { spawn "playerctl" "play-pause"; }
+    XF86AudioNext allow-when-locked=true { spawn "playerctl" "next"; }
+    XF86AudioPrev allow-when-locked=true { spawn "playerctl" "previous"; }
 
     Mod+O repeat=false { toggle-overview; }
     Mod+Q repeat=false { close-window; }
