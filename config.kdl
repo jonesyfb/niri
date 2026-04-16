@@ -18,7 +18,7 @@ input {
 
 // Per-machine output config — symlinked by make_symlinks.sh
 // Run: ./make_symlinks.sh (then choose desktop or laptop)
-include "~/.config/niri/outputs-local.kdl"
+include "outputs-local.kdl"
 layout {
     gaps 0
     center-focused-column "never"
