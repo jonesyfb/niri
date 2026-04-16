@@ -1,0 +1,22 @@
+// Desktop monitor outputs
+// Primary: DP-1 (2560x1440)
+// Secondary: HDMI-A-1 (1024x600 tablet/small display, below primary)
+
+input {
+    touch {
+        map-to-output "HDMI-A-1"
+    }
+}
+
+output "DP-1" {
+    mode "2560x1440@74.964"
+    transform "normal"
+    position x=0 y=0
+    background-color "#00000000"
+}
+output "HDMI-A-1" {
+    mode "1024x600@60.044"
+    transform "normal"
+    position x=768 y=1440
+    background-color "#00000000"
+}

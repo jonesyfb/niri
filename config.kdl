@@ -1,7 +1,4 @@
 input {
-    touch {
-        map-to-output "HDMI-A-1"
-    }
     keyboard {
         xkb {
         }
@@ -18,18 +15,10 @@ input {
     warp-mouse-to-focus
     focus-follows-mouse max-scroll-amount="0%"
 }
-output "DP-1" {
-    mode "2560x1440@74.964"
-    transform "normal"
-    position x=0 y=0
-    background-color "#00000000"
-}
-output "HDMI-A-1" {
-    mode "1024x600@60.044"
-    transform "normal"
-    position x=768 y=1440
-    background-color "#00000000"
-}
+
+// Per-machine output config — symlinked by make_symlinks.sh
+// Run: ./make_symlinks.sh (then choose desktop or laptop)
+include "~/.config/niri/outputs-local.kdl"
 layout {
     gaps 0
     center-focused-column "never"

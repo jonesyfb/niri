@@ -1,0 +1,9 @@
+// Laptop monitor outputs
+// Update "eDP-1" to match your actual output name (check with: niri msg outputs)
+
+output "eDP-1" {
+    mode "1920x1080@60.000"
+    transform "normal"
+    position x=0 y=0
+    background-color "#00000000"
+}
