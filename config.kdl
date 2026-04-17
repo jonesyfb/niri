@@ -30,8 +30,8 @@ layout {
     default-column-width {}
     focus-ring {
         width 1
-        active-gradient from="#8FBCBB" to="#5E81AC" angle=45
-        inactive-gradient from="#81A1C1" to="#5E81AC" angle=45 relative-to="workspace-view"
+        active-gradient from="#89ddff" to="#7aa2f7" angle=45
+        inactive-gradient from="#89ddff" to="#7aa2f7" angle=45 relative-to="workspace-view"
     }
     background-color "transparent"
     border {
@@ -105,6 +105,8 @@ window-rule {
     block-out-from "screen-capture"
 }
 binds {
+    Mod+Space { spawn "huginn-toggle"; }
+
     Mod+Shift+Slash { show-hotkey-overlay; }
     Mod+T hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
     Mod+B hotkey-overlay-title="Open a Browser: brave" { spawn "brave"; }
