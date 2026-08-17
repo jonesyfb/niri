@@ -57,7 +57,7 @@ prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
 switch-events {
-    lid-close { spawn "swaylock"; }
+    lid-close { spawn "sh" "-c" "$HOME/dotfiles/swaylock/swaylock-random.sh"; }
 }
 
 animations {
