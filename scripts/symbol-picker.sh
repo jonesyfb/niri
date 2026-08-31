@@ -33,7 +33,11 @@ symbols="
 ǫ	ǫ - o with ogonek (Old Norse)
 "
 
-choice=$(printf '%s\n' "$symbols" | sed '/^$/d' | fuzzel --dmenu -p "Symbol: ")
+# --no-exit-on-keyboard-focus-loss matters when this is launched *from* the
+# fuzzel app launcher: the launcher is still tearing down as this second
+# fuzzel opens, and the focus handoff would otherwise close it instantly.
+choice=$(printf '%s\n' "$symbols" | sed '/^$/d' |
+    fuzzel --dmenu --no-exit-on-keyboard-focus-loss -p "Symbol: ")
 [ -z "$choice" ] && exit 0
 
 char=$(printf '%s' "$choice" | cut -f1)
