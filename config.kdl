@@ -1,3 +1,4 @@
+// my niri conf
 input {
     keyboard {
         xkb {
@@ -109,7 +110,7 @@ window-rule {
     block-out-from "screen-capture"
 }
 binds {
-    Mod+Space { spawn "huginn-toggle"; }
+    Mod+Space { spawn "/home/nate/dotfiles/huginn/scripts/huginn-toggle.sh"; }
 
     Mod+Shift+Slash { show-hotkey-overlay; }
     Mod+T hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }

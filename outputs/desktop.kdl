@@ -1,6 +1,6 @@
 // Desktop monitor outputs
 // Primary: DP-1 (2560x1440)
-// Secondary: HDMI-A-1 (1024x600 tablet/small display, below primary)
+// Secondary: HDMI-A-1 (1920x1080, right of primary)
 
 input {
     touch {
@@ -15,8 +15,8 @@ output "DP-1" {
     background-color "#00000000"
 }
 output "HDMI-A-1" {
-    mode "1024x600@60.044"
+    mode "1920x1080@165.000"
     transform "normal"
-    position x=768 y=1440
+    position x=2560 y=0
     background-color "#00000000"
 }
